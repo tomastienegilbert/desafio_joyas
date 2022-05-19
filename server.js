@@ -23,22 +23,8 @@ app.get('/api/v1/joyas', (req, res) => {
   res.send(HATEOASV1());
 });
 
-app.get('/api/v1/joyas/:id', (req, res) => {
-  const { id } = req.params;
-  const joya = joyas.find(j => j.id === parseInt(id));
-  if (!joya) {
-      return res.status(404).send({
-          message: 'La joya no existe',
-      });
-  } else {
-    return res.send(joya);
-  }
-});
-
-
-
+//Hacer una segunda versión de la API que ofrezca los mismos datos pero con los nombres de las propiedades diferentes. (1 punto)
 //VERSIÓN 2
-
 const HATEOASV2 = () => {
   return joyas.results.map((e) => {
     return {
@@ -61,22 +47,40 @@ app.get("/api/v2/joyas", (req, res) => {
   });
 });
 
+//Crear una ruta que devuelva como payload un JSON con un mensaje de error cuando el usuario consulte el id de una joya que no exista.
+app.get('/api/v1/joyas/:id', (req, res) => {
+  const { id } = req.params;
+  const joya = joyas.results.find((j) => j.id === parseInt(id));
+  if (!joya) {
+      return res.status(404).send({
+          message: 'La joya no existe',
+      });
+  } else {
+    return res.send(joya);
+  }
+});
+
 // La API REST debe poder ofrecer una ruta con la que se puedan filtrar las joyas por categoría.
 const filterByCategory = (category) => {
   return joyas.filter((j) => j.category === category);
-}
+};
 
 //Ruta de filtro
 app.get('/api/v1/category/:category', (req, res) => {
   const { category } = req.params;
   const joyasByCategory = filterByCategory(category);
   res.send({
-    name: category,
-    joya: joyasByCategory.length
-  })
+    cant: joyasByCategory.length,
+    joyas: joyasByCategory,
+  });
 });
-
-//Crear una ruta que devuelva como payload un JSON con un mensaje de error cuando el usuario consulte el id de una joya que no exista.
+//   const { category } = req.params;
+//   const joyasByCategory = filterByCategory(category);
+//   res.send({
+//     name: category,
+//     joya: joyasByCategory.length
+//   })
+// });
 
 app.get('/api/v1/joyas/:id', (req, res) => {
   const { id } = req.params;
