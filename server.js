@@ -15,50 +15,29 @@ app.get('/', (req, res) => {
 //Crear una ruta para la devolución de todas las joyas aplicando HATEOAS.
 //VERSIÓN 1
 
-// HATEOASV1
-// const HATEOASV1 = () => {
-//   joyas.map((j) => {
-//     return {
-//       name: j.name,
-//       href: `http://localhost:3000/api/v1/joyas/${j.id}`,
-//     };
-//   });
-// };
-
 const HATEOASV1 = () => {
   return joyas.results;
 };
 
 app.get('/api/v1/joyas', (req, res) => {
-  res.send({
-    joyas: HATEOASV1,
-  });
+  res.send(HATEOASV1());
 });
 
 app.get('/api/v1/joyas/:id', (req, res) => {
-    const { id } = req.params;
-    const joya = joyas.find(j => j.id === parseInt(id));
-    if (!joya) {
-        return res.status(404).send({
-            message: 'La joya no existe',
-        });
-    } else {
-      return res.send(joya);
-    }
-  });
+  const { id } = req.params;
+  const joya = joyas.find(j => j.id === parseInt(id));
+  if (!joya) {
+      return res.status(404).send({
+          message: 'La joya no existe',
+      });
+  } else {
+    return res.send(joya);
+  }
+});
 
 
 
 //VERSIÓN 2
-
-// const HATEOASV2 = () => {
-//   joyas.map((j) => {
-//     return {
-//       joya: j.name,
-//       src: `http://localhost:3000/joya/${j.id}`,
-//     };
-//   });
-// };
 
 const HATEOASV2 = () => {
   return joyas.results.map((e) => {
