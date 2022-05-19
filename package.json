@@ -1,7 +1,6 @@
 {
   "name": "des3",
   "version": "1.0.0",
-  "description": "",
   "main": "buenas-practicas.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,7 +8,7 @@
     "dev": "nodemon server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "tomás hurtado",
   "license": "ISC",
   "dependencies": {
     "chalk": "^4.1.2",
@@ -17,5 +16,14 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.16"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomastienegilbert/desafio_joyas.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tomastienegilbert/desafio_joyas/issues"
+  },
+  "homepage": "https://github.com/tomastienegilbert/desafio_joyas#readme",
+  "description": ""
 }
