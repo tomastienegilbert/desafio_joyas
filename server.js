@@ -16,13 +16,17 @@ app.get('/', (req, res) => {
 //VERSIÓN 1
 
 // HATEOASV1
+// const HATEOASV1 = () => {
+//   joyas.map((j) => {
+//     return {
+//       name: j.name,
+//       href: `http://localhost:3000/api/v1/joyas/${j.id}`,
+//     };
+//   });
+// };
+
 const HATEOASV1 = () => {
-  joyas.map((j) => {
-    return {
-      name: j.name,
-      href: `http://localhost:3000/api/v1/joyas/${j.id}`,
-    };
-  });
+  return joyas.results;
 };
 
 app.get('/api/v1/joyas', (req, res) => {
@@ -47,11 +51,27 @@ app.get('/api/v1/joyas/:id', (req, res) => {
 
 //VERSIÓN 2
 
+// const HATEOASV2 = () => {
+//   joyas.map((j) => {
+//     return {
+//       joya: j.name,
+//       src: `http://localhost:3000/joya/${j.id}`,
+//     };
+//   });
+// };
+
 const HATEOASV2 = () => {
-  joyas.map((j) => {
+  return joyas.results.map((e) => {
     return {
-      joya: j.name,
-      src: `http://localhost:3000/joya/${j.id}`,
+      id: e.id,
+      nombre: e.name,
+      modelo: e.model,
+      categoria: e.category,
+      metal: e.metal,
+      cadena: e.cadena,
+      medida: e.medida,
+      valor: e.value,
+      stock: e.stock,
     };
   });
 };
