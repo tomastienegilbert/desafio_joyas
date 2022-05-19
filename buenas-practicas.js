@@ -28,7 +28,7 @@ const HATEOASV1 = () =>
     };
   });
 
-const HATEOASV2 = () =>
+const HATEOASV2 = () => {
   guitarras.map((g) => {
     return {
       guitar: g.name,
@@ -41,6 +41,7 @@ app.get("/api/v1/guitarras", (req, res) => {
     guitarras: HATEOASV1(),
   });
 });
+}
 
 // Estamos obteniendo el mismo modelo de datos con la diferencia de los nombres de las propiedades.
 app.get("/api/v2/guitarras", (req, res) => {

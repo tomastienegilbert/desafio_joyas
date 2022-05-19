@@ -16,49 +16,51 @@ app.get('/', (req, res) => {
 //VERSIÓN 1
 
 // HATEOASV1
-const HATEOASV1 = () =>
+const HATEOASV1 = () => {
   joyas.map((j) => {
     return {
       name: j.name,
       href: `http://localhost:3000/api/v1/joyas/${j.id}`,
     };
   });
+};
 
-  app.get('/api/v1/joyas', (req, res) => {
-    res.send({
-      joyas: HATEOASV1(),
-    });
+app.get('/api/v1/joyas', (req, res) => {
+  res.send({
+    joyas: HATEOASV1,
   });
+});
 
-  app.get('/api/v1/joyas/:id', (req, res) => {
-      const { id } = req.params;
-      const joya = joyas.find(j => j.id === parseInt(id));
-      if (!joya) {
-          return res.status(404).send({
-              message: 'La joya no existe',
-          });
-      } else {
-        return res.send(joya);
-      }
-    });
+app.get('/api/v1/joyas/:id', (req, res) => {
+    const { id } = req.params;
+    const joya = joyas.find(j => j.id === parseInt(id));
+    if (!joya) {
+        return res.status(404).send({
+            message: 'La joya no existe',
+        });
+    } else {
+      return res.send(joya);
+    }
+  });
 
 
 
 //VERSIÓN 2
 
-const HATEOASV2 = () =>
+const HATEOASV2 = () => {
   joyas.map((j) => {
     return {
       joya: j.name,
       src: `http://localhost:3000/joya/${j.id}`,
     };
   });
+};
 
-  app.get("/api/v2/joyas", (req, res) => {
-    res.send({
-      joyas: HATEOASV2(),
-    });
+app.get("/api/v2/joyas", (req, res) => {
+  res.send({
+    joyas: HATEOASV2(),
   });
+});
 
 // La API REST debe poder ofrecer una ruta con la que se puedan filtrar las joyas por categoría.
 const filterByCategory = (category) => {
