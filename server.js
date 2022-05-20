@@ -113,4 +113,8 @@ app.get('/api/v1/joyas', (req, res) => {
 //     } else {
 //       return b.value - a.value;
 //     }
+<<<<<<< HEAD
 //   });
+=======
+//   });
+>>>>>>> refs/remotes/origin/main
