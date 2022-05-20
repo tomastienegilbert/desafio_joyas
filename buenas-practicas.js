@@ -64,7 +64,6 @@ const filtroByBody = (body) => {
 app.get("/api/v3/body/:cuerpo", (req, res) => {
   const { cuerpo } = req.params;
   const guitarrasByBody = filtroByBody(cuerpo);
-
   res.send({
     cant: guitarrasByBody.length,
     guitarras: guitarrasByBody,
