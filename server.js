@@ -85,22 +85,22 @@ app.get('/api/v1/joyas/categoria/:categoria', (req, res) => {
 //   })
 // });
 
-//Permitir hacer ordenamiento de las joyas según su valor de forma ascendente o descendente usando Query Strings (?orden=asc o ?orden=desc).
-app.get('/api/v1/joyas', (req, res) => {
-  const { orden }= req.query
-  if (orden === 'asc' || orden === 'desc') {
-    const joyasOrdenadas = joyas.results.sort((a, b) => {
-      if (orden === 'asc') {
-        return a.value - b.value;
-      } else {
-        return b.value - a.value;
-      }
-    });
-    console.log(joyasOrdenadas);
-    return res.send({joyasOrdenadas});
-  }
-  res.send(HATEOASV1());
-});
+//Permitir hacer ordenamiento de las joyas según su valor de forma ascendente o descendente usando Query Strings
+// app.get('/api/v1/joyas', (req, res) => {
+//   const { orden }= req.query
+//   if (orden === 'asc' || orden === 'desc') {
+//     const joyasOrdenadas = joyas.results.sort((a, b) => {
+//       if (orden === 'asc') {
+//         return a.value - b.value;
+//       } else {
+//         return b.value - a.value;
+//       }
+//     });
+//     console.log(joyasOrdenadas);
+//     return res.send({joyasOrdenadas});
+//   }
+//   res.send(HATEOASV1());
+// });
 
 
 
